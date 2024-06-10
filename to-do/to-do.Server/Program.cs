@@ -1,4 +1,9 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using to_do.Server.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<to_doServerContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("to_doServerContext") ?? throw new InvalidOperationException("Connection string 'to_doServerContext' not found.")));
 
 // Add services to the container.
 
