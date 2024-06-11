@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using to_do.Server.Data;
 using to_do.Server.Models;
 
 namespace to_do.Server.Controllers
@@ -14,9 +13,9 @@ namespace to_do.Server.Controllers
     [ApiController]
     public class ToDoItemsController : ControllerBase
     {
-        private readonly to_doServerContext _context;
+        private readonly ToDoContext _context;
 
-        public ToDoItemsController(to_doServerContext context)
+        public ToDoItemsController(ToDoContext context)
         {
             _context = context;
         }
@@ -25,14 +24,14 @@ namespace to_do.Server.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ToDoItem>>> GetToDoItem()
         {
-            return await _context.ToDoItem.ToListAsync();
+            return await _context.ToDoItems.ToListAsync();
         }
 
         // GET: api/ToDoItems/5
         [HttpGet("{id}")]
         public async Task<ActionResult<ToDoItem>> GetToDoItem(Guid id)
         {
-            var toDoItem = await _context.ToDoItem.FindAsync(id);
+            var toDoItem = await _context.ToDoItems.FindAsync(id);
 
             if (toDoItem == null)
             {
@@ -78,7 +77,7 @@ namespace to_do.Server.Controllers
         [HttpPost]
         public async Task<ActionResult<ToDoItem>> PostToDoItem(ToDoItem toDoItem)
         {
-            _context.ToDoItem.Add(toDoItem);
+            _context.ToDoItems.Add(toDoItem);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetToDoItem", new { id = toDoItem.Id }, toDoItem);
@@ -88,13 +87,13 @@ namespace to_do.Server.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteToDoItem(Guid id)
         {
-            var toDoItem = await _context.ToDoItem.FindAsync(id);
+            var toDoItem = await _context.ToDoItems.FindAsync(id);
             if (toDoItem == null)
             {
                 return NotFound();
             }
 
-            _context.ToDoItem.Remove(toDoItem);
+            _context.ToDoItems.Remove(toDoItem);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -102,7 +101,7 @@ namespace to_do.Server.Controllers
 
         private bool ToDoItemExists(Guid id)
         {
-            return _context.ToDoItem.Any(e => e.Id == id);
+            return _context.ToDoItems.Any(e => e.Id == id);
         }
     }
 }
