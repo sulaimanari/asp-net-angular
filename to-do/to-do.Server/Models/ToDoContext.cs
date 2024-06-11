@@ -6,10 +6,7 @@ namespace to_do.Server.Models;
 
 public partial class ToDoContext : DbContext
 {
-    public ToDoContext()
-    {
-    }
-
+   
     public ToDoContext(DbContextOptions<ToDoContext> options)
         : base(options)
     {

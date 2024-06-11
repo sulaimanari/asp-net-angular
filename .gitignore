@@ -5,3 +5,6 @@
 /to-do/.vs/ProjectEvaluation/**
 /to-do/to-do.client/obj/Debug/**
 /to-do/.vs/to-do/DesignTimeBuild/**
+to-do/to-do.Server/obj/**
+to-do/.vs/**
+to-do/to-do.Server/bin/**
