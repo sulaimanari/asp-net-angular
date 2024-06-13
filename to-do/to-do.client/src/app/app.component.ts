@@ -1,36 +1,28 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { TodoItemService } from './todo-item.service';
+import { ToDoItem } from './ToDoItem';
+import { Observable } from 'rxjs';
 
-interface WeatherForecast {
-  date: string;
-  temperatureC: number;
-  temperatureF: number;
-  summary: string;
-}
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit {
-  public forecasts: WeatherForecast[] = [];
 
-  constructor(private http: HttpClient) {}
+export class AppComponent implements OnInit {
+
+  todoItems$: Observable<ToDoItem[]> | undefined;
+
+  constructor(private toDoItemService: TodoItemService) { }
 
   ngOnInit() {
-    this.getForecasts();
+    this.getToDoItems();
   }
 
-  getForecasts() {
-    this.http.get<WeatherForecast[]>('/weatherforecast').subscribe(
-      (result) => {
-        this.forecasts = result;
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
+  getToDoItems() {
+    this.todoItems$ = this.toDoItemService.getToDoItems();
   }
 
   title = 'to-do.client';

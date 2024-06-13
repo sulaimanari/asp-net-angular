@@ -1,24 +1,24 @@
-﻿<h1 id="tableLabel">Weather forecast</h1>
+<header> <h1 id="tableLabel">ToDos App</h1> </header>
 
-<p>This component demonstrates fetching data from the server.</p>
+<body>
 
-<p *ngIf="!forecasts"><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationangular">https://aka.ms/jspsintegrationangular</a> for more details.</em></p>
+  <p *ngIf="!todoItems$"><em>Loading... Please
+  refresh once the ASP.NET backend has started. See
+  <a href="https://aka.ms/jspsintegrationangular">https://aka.ms/jspsintegrationangular</a>
+  for more details.</em>
+  </p>
 
-<table *ngIf="forecasts">
-    <thead>
-        <tr>
-            <th>Date</th>
-            <th>Temp. (C)</th>
-            <th>Temp. (F)</th>
-            <th>Summary</th>
-        </tr>
-    </thead>
+
+
+<table *ngIf="todoItems$">
+    <hr class="dash-line" />
     <tbody>
-        <tr *ngFor="let forecast of forecasts">
-            <td>{{ forecast.date }}</td>
-            <td>{{ forecast.temperatureC }}</td>
-            <td>{{ forecast.temperatureF }}</td>
-            <td>{{ forecast.summary }}</td>
-        </tr>
+      <tr *ngFor="let todoItem of todoItems$ | async">
+        <td>
+          {{ todoItem.item }}
+        </td>
+      </tr>
     </tbody>
-</table>
+    <hr class="dash-line" />
+  </table>
+</body>

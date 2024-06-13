@@ -1,6 +1,6 @@
 @to_do.Server_HostAddress = http://localhost:5029
 
-GET {{to_do.Server_HostAddress}}/weatherforecast/
+GET {{to_do.Server_HostAddress}}/api/ToDoItems/
 Accept: application/json
 
 ###

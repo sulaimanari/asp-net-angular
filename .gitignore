@@ -11,3 +11,4 @@ to-do/to-do.Server/bin/**
 to-do/to-do.client/obj/**
 to-do/to-do.client/node_modules/**
 /to-do/to-do.client/.vscode/**
+/to-do/.vs/to-do/

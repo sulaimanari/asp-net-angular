@@ -5,6 +5,13 @@ const PROXY_CONFIG = [
     ],
     target: "https://localhost:7008",
     secure: false
+  },
+  {
+    context: [
+      "/api/ToDoItems",
+    ],
+    target: "https://localhost:7008",
+    secure: false,
   }
 ]
 

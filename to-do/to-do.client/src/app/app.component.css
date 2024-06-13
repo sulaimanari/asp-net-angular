@@ -1,7 +1,25 @@
-﻿:host {
-    max-width: 1280px;
-    padding: 2rem;
-    text-align: center;
+header {
+  background-color: #F0F0F0;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+:host {
+  max-width: 1280px;
+  padding: 2rem;
+  text-align: center;
+
+}
+
+body {
+  background-color: #14E9F5;
+}
+
+h1: {
+  text-align: center;
+  font-size: 44px;
 }
 
 tr:nth-child(even) {
@@ -20,3 +38,10 @@ th, td {
 table {
     margin: 0 auto;
 }
+
+hr.dash-line {
+  border: 10px dashed #F49731;
+  border-radius: 5px;
+}
+
+
