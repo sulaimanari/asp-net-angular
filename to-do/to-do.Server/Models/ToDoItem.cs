@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace to_do.Server.Models;
+﻿namespace to_do.Server.Models;
 
 public partial class ToDoItem
 {

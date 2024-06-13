@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, observable } from 'rxjs';
-import { catchError, map , tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 import { ToDoItem } from './ToDoItem';
 
 
@@ -13,7 +13,7 @@ import { ToDoItem } from './ToDoItem';
 })
 export class TodoItemService {
 
-  private apiGetToDoITemUrl = 'api/ToDoItems';
+  private apiToDoItemsUrl = 'api/ToDoItems';
 
   public todoItems: ToDoItem[] = []; 
   constructor(private http: HttpClient) {
@@ -21,7 +21,7 @@ export class TodoItemService {
   }
 
   getToDoItems(): Observable<ToDoItem[]> {
-    return this.http.get<ToDoItem[]>(this.apiGetToDoITemUrl)
+    return this.http.get<ToDoItem[]>(this.apiToDoItemsUrl)
       .pipe(
         tap(items => console.log(`fetched ${items.length} items`)),
         catchError(async (err) => {

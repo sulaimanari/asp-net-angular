@@ -1,5 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using to_do.Server.Models;
 var builder = WebApplication.CreateBuilder(args);
 
