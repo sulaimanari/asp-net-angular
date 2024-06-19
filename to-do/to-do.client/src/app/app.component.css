@@ -72,3 +72,9 @@ hr.dash-line {
 .input-container button:hover {
       background-color: #00CC00; /* Dunklere Farbe bei Hover */
 }
+
+.input-item {
+ 
+  box-sizing: border-box;
+  overflow: visible; 
+}

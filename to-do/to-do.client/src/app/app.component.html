@@ -23,11 +23,12 @@
 <table *ngIf="todoItems">
 
   <tbody>
-  <tr *ngFor="let todoItem of todoItems">
-    <td>
-      {{ todoItem.item }}
-    </td>
-  </tr>
+    <tr *ngFor="let todoItem of todoItems">
+      <td>
+        <button class="edit" (click)="updateItem(todoItem)">Edit</button>
+      </td>
+        <input [(ngModel)]="todoItem.item" />
+      
   </tbody>
 
 </table>

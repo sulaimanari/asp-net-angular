@@ -38,8 +38,11 @@ export class TodoItemService {
   }
 
 
-  /// TODO delete method
+ 
   /// TODO update method
+  async updateToDoItem(updateItem: ToDoItem) {
+    return await firstValueFrom(this.http.put<ToDoItem>(this.apiToDoItemsUrl, updateItem, this.httpOptions));
+  } 
 
-
+  /// TODO delete method
 }
