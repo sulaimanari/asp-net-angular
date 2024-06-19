@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoItemService } from './todo-item.service';
 import { ToDoItem } from './ToDoItem';
-import { Observable } from 'rxjs';
+import { Observable, Subject, firstValueFrom, tap } from 'rxjs';
 
 
 @Component({
@@ -11,8 +11,10 @@ import { Observable } from 'rxjs';
 })
 
 export class AppComponent implements OnInit {
+  title = 'to-do.client';
+  todoItems?: ToDoItem[];
 
-  todoItems$: Observable<ToDoItem[]> | undefined;
+  neuToDoItem: string = '';
 
   constructor(private toDoItemService: TodoItemService) { }
 
@@ -20,9 +22,13 @@ export class AppComponent implements OnInit {
     this.getToDoItems();
   }
 
-  getToDoItems() {
-    this.todoItems$ = this.toDoItemService.getToDoItems();
+  async getToDoItems() {
+    this.todoItems = await firstValueFrom(this.toDoItemService.getToDoItems());
   }
 
-  title = 'to-do.client';
+  async addNeuItem() {
+    const newItem = await this.toDoItemService.addToDoItem(this.neuToDoItem);
+    this.todoItems?.push(newItem);
+  }
+  
 }

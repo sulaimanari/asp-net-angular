@@ -53,12 +53,21 @@ namespace to_do.Server.Controllers
 
         
         [HttpPost]
-        public async Task<ActionResult<ToDoItem>> PostToDoItem(ToDoItem toDoItem)
+        public async Task<ActionResult<ToDoItem>> PostToDoItem([FromBody] string item)
         {
-            _context.ToDoItems.Add(toDoItem);
+            if (string.IsNullOrEmpty(item))
+            {
+                return BadRequest();
+            }
+            var newItem = new ToDoItem()
+            {
+                Id = Guid.NewGuid(),
+                Item = item
+            };
+            _context.ToDoItems.Add(newItem);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetToDoItem", new { id = toDoItem.Id }, toDoItem);
+            return CreatedAtAction("PostToDoItem", newItem);
         }
 
         
