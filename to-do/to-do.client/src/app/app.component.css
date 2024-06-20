@@ -1,19 +1,22 @@
+.code-box {
+  background-color: #14E9F5;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  margin: 20px;
+  padding: 2rem;
+  text-align: center;
+  justify-content: center;
+}
+
+
 header {
-  background-color: #F0F0F0;
+  background-color: #c7c2c2;
   height: 100px;
   display: flex;
   justify-content: center;
   text-align: center;
-}
-
-:host {
-  max-width: 1280px;
-  padding: 2rem;
-  text-align: center;
-}
-
-body {
-  background-color: #14E9F5;
+  margin: 50px;
 }
 
 h1 {
@@ -21,41 +24,23 @@ h1 {
   font-size: 44px;
 }
 
-tr:nth-child(even) {
-    background: #F2F2F2;
-}
-
-tr:nth-child(odd) {
-    background: #FFF;
-}
-
-th, td {
-    padding-left: 1rem;
-    padding-right: 1rem;
-}
-
 table {
-    margin: 0 auto;
+  margin: 0 auto;
 }
-
-hr.dash-line {
-  border: 10px dashed #F49731;
-  border-radius: 5px;
-  margin: 50px;
-}
-
 
 .input-container {
   display: flex;
-  align-items: center;
   justify-content: center;
+  height: auto;
 }
 
 .input-container input {
     padding: 10px;
-    margin-right: 10px;
+    margin-right: 50px;
     border: none;
     border-radius: 5px;
+    background-color: #efa85b;
+    color: black;
     box-shadow: inset 0 0 10px rgba(244, 151, 49, 0.5); /* F49731 */
 }
 
@@ -63,18 +48,72 @@ hr.dash-line {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #00FF00;
-    color: white;
+    background-color: rgb(3, 17, 3, 0.50);
+    color: black;
     box-shadow: inset 0 0 10px rgba(0, 255, 0, 0.5); /* 00FF00 */
     cursor: pointer;
 }
 
 .input-container button:hover {
-      background-color: #00CC00; /* Dunklere Farbe bei Hover */
+      background-color: #00CC00;
+    }
+
+
+hr.dash-line {
+  border: 5px dashed #F49731;
+  border-radius: 2px;
+  margin: 50px;
 }
 
-.input-item {
- 
-  box-sizing: border-box;
-  overflow: visible; 
+th, td {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: #14E9F5;
 }
+
+tr:nth-child(even) {
+    background: #F2F2F2;
+}
+
+tr:nth-child(odd) {
+    background: #5f3b14;
+}
+
+.delete-btn {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f58c8c;
+  color: black;
+  box-shadow: inset 0 0 10px rgba(5, 255, 100, 0.5); /* 00FF00 */
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: #ff0000;
+}
+
+
+.edit-btn {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #6f58a9;
+  color: black;
+  box-shadow: inset 0 0 10px rgba(5, 255, 100, 0.5); /* 00FF00 */
+  cursor: pointer;
+}
+
+  .edit-btn:hover {
+    background-color: #4704f1;
+  }
+
+
+.to-do-items {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #a34c0f;
+  color: black;
+}
+

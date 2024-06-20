@@ -1,30 +1,33 @@
-<header>
-  <h1 id="tableLabel">ToDos App</h1>
-</header>
+<div class="code-box">
+  <header>
+    <h1 id="tableLabel">ToDos App</h1>
+  </header>
 
-<div class="input-container">
-  <input type="text" placeholder="Enter a new item" [(ngModel)]="neuToDoItem">
-  <button (click)="addNeuItem()">Add Item</button>
+  <div class="input-container">
+    <input type="text" placeholder="Enter a new item" [(ngModel)]="neuToDoItem">
+    <button (click)="addNeuItem()">Add Item</button>
+  </div>
+
+  <p *ngIf="!todoItems">
+    <em>
+      Loading... Please refresh once the ASP.NET backend has started. See
+      <a href="https://aka.ms/jspsintegrationangular">https://aka.ms/jspsintegrationangular</a>
+      for more details.
+    </em>
+  </p>
+
+  <hr class="dash-line" />
+
+  <table *ngIf="todoItems">
+    <tbody>
+      <tr *ngFor="let todoItem of todoItems">
+        <td><input class="to-do-items" [(ngModel)]="todoItem.item" /></td>
+        <td><button class="edit-btn" (click)="updateItem(todoItem)">Edit</button></td>
+        <td><button class="delete-btn" (click)="deleteItem(todoItem)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr class="dash-line" />
+
 </div>
-
-<p *ngIf="!todoItems">
-  <em>
-    Loading... Please refresh once the ASP.NET backend has started. See
-    <a href="https://aka.ms/jspsintegrationangular">https://aka.ms/jspsintegrationangular</a>
-    for more details.
-  </em>
-</p>
-
-<hr class="dash-line" />
-
-<table *ngIf="todoItems">
-  <tbody>
-  <tr *ngFor="let todoItem of todoItems">
-    <td><input [(ngModel)]="todoItem.item" /></td>
-    <td><button class="edit-btn" (click)="updateItem(todoItem)">Edit</button></td>
-    <td><button class="delete-btn" (click)="deleteItem(todoItem)">Delete</button></td>
-  </tr>
-  </tbody>
-</table>
-
-<hr class="dash-line" />
