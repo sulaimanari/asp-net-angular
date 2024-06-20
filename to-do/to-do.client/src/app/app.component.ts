@@ -29,11 +29,15 @@ export class AppComponent implements OnInit {
 
   async addNeuItem() {
     const newItem = await this.toDoItemService.addToDoItem(this.neuToDoItem);
-    this.todoItems?.push(newItem);
+    await this.getToDoItems();
   }
 
   async updateItem(updatItem: ToDoItem) {
-    const update = await this.toDoItemService.updateToDoItem(updatItem);
+     await this.toDoItemService.updateToDoItem(updatItem);
   }
- 
+
+  async deleteItem(deleteItem: ToDoItem) {
+    await this.toDoItemService.deleteToDoItem(deleteItem.id);
+    await this.getToDoItems();
+  }
 }

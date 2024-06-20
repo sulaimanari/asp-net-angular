@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, firstValueFrom, of } from 'rxjs';
+import { Observable, firstValueFrom } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { ToDoItem } from './ToDoItem';
 
@@ -18,6 +18,7 @@ export class TodoItemService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
+
   constructor(private http: HttpClient) {
 
   }
@@ -37,12 +38,15 @@ export class TodoItemService {
     return await firstValueFrom(this.http.post<ToDoItem>(this.apiToDoItemsUrl, `"${addNeuItem}"`, this.httpOptions));
   }
 
-
- 
-  /// TODO update method
   async updateToDoItem(updateItem: ToDoItem) {
     return await firstValueFrom(this.http.put<ToDoItem>(this.apiToDoItemsUrl, updateItem, this.httpOptions));
   } 
 
-  /// TODO delete method
+
+  async deleteToDoItem(deleteId: string): Promise<void> {
+    const url = `${this.apiToDoItemsUrl}/${deleteId}`;
+    await firstValueFrom(this.http.delete<ToDoItem>(url));
+  }
+
+ 
 }

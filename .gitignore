@@ -12,3 +12,4 @@ to-do/to-do.client/obj/**
 to-do/to-do.client/node_modules/**
 /to-do/to-do.client/.vscode/**
 /to-do/.vs/to-do/
+/to-do/to-do.sln.DotSettings.user
