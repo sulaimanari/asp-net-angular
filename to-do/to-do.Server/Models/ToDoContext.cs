@@ -24,6 +24,7 @@ public partial class ToDoContext : DbContext
                 .HasDefaultValueSql("(newid())")
                 .HasColumnName("ID");
             entity.Property(e => e.Item).HasColumnType("text");
+            entity.Property(p => p.Priority).HasColumnType("int");
         });
 
         OnModelCreatingPartial(modelBuilder);
