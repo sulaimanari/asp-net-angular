@@ -13,3 +13,10 @@ to-do/to-do.client/node_modules/**
 /to-do/to-do.client/.vscode/**
 /to-do/.vs/to-do/
 /to-do/to-do.sln.DotSettings.user
+/to-do/.vs/to-do/**
+/.vs/asp-net-angular/v17/.wsuo
+/.vs/asp-net-angular/FileContentIndex/130c8e3b-8e8a-4e85-a39d-67d26f1c9b8f.vsidx
+/.vs/slnx.sqlite
+/.vs/**
+/to-do/.vs/**
+/to-do/.vs/to-do/DesignTimeBuild/.dtbcache.v2

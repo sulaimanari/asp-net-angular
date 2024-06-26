@@ -5,4 +5,6 @@ public partial class ToDoItem
     public Guid Id { get; set; }
 
     public string Item { get; set; } = null!;
+
+    public int Priority { get; set; } = 0!;
 }
