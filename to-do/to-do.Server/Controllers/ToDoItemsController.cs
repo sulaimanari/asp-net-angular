@@ -74,7 +74,27 @@ namespace to_do.Server.Controllers
             return CreatedAtAction("PostToDoItem", newItem);
         }
 
-        
+        [HttpPost("updatePriority")]
+        public async Task<IActionResult> UpdateToDoItemPriority([FromBody] List<Guid> itemIds)
+        {
+            var items = await _context.ToDoItems.Where(item => itemIds.Contains(item.Id)).ToListAsync();
+
+            for (int i = 0; i < itemIds.Count; i++)
+            {
+                var itemId = itemIds[i];
+                var item = items.FirstOrDefault(x => x.Id == itemId);
+                if (item != null)
+                {
+                    item.Priority = i + 1;
+                }
+            }
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteToDoItem(Guid id)
         {
