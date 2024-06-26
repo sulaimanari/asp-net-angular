@@ -48,5 +48,9 @@ export class TodoItemService {
     await firstValueFrom(this.http.delete<ToDoItem>(url));
   }
 
+  async updatPriorty(itemIds: string[]): Promise<any> {
+    const url = `${this.apiToDoItemsUrl}/updatePriority`;
+    return this.http.post<any>(url, itemIds, this.httpOptions);
+  } 
  
 }

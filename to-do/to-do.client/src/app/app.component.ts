@@ -40,4 +40,9 @@ export class AppComponent implements OnInit {
     await this.toDoItemService.deleteToDoItem(deleteItem.id);
     await this.getToDoItems();
   }
+
+  async updatePriority(priority: string[]) {
+    await this.toDoItemService.updatPriorty(priority);
+    await this.getToDoItems();
+  }
 }
