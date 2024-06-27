@@ -19,14 +19,14 @@
   <hr class="dash-line" />
 
   <table *ngIf="todoItems">
-    <tbody>
-      <tr *ngFor="let todoItem of todoItems">
+    <tbody cdkDropList (cdkDropListDropped)="drop($event)">
+      <tr *ngFor="let todoItem of todoItems" cdkDrag>
         <td><input class="to-do-items" [(ngModel)]="todoItem.item" /></td>
         <td><button class="edit-btn" (click)="updateItem(todoItem)">Edit</button></td>
         <td><button class="delete-btn" (click)="deleteItem(todoItem)">Delete</button></td>
       </tr>
-    </tbody>
-  </table>
+      </tbody>
+</table>
 
   <hr class="dash-line" />
 

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoItemService } from './todo-item.service';
 import { ToDoItem } from './ToDoItem';
-import { Observable, Subject, firstValueFrom, tap } from 'rxjs';
-
+import { firstValueFrom } from 'rxjs';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-root',
@@ -41,8 +41,11 @@ export class AppComponent implements OnInit {
     await this.getToDoItems();
   }
 
-  async updatePriority(priority: string[]) {
-    await this.toDoItemService.updatPriorty(priority);
-    await this.getToDoItems();
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.todoItems!, event.previousIndex, event.currentIndex);
+    const ids = this.todoItems!.map(item => item.id);
+    this.toDoItemService.updatePriority(ids).subscribe(updatedItems => {
+      this.todoItems = updatedItems;
+    });
   }
 }
